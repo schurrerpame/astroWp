@@ -1,16 +1,23 @@
+# Astro + WordPress Integration
+
+This project displays a static site built with [Astro](https://astro.build) that synchronizes content updates from a WordPress backend using a webhook.
+
+The WordPress site triggers a Netlify deploy whenever a new post is published or updated. This is achieved by adding a simple `wp_remote_post()` webhook call inside the `functions.php` file in the active theme.
+
+🔗 [Live Astro Site](https://astro-wp-site.netlify.app/)
+
+This integration demonstrates a real-world example of decoupling WordPress as a headless CMS while serving a fast, SEO-optimized static frontend with Astro.
+
+---
+
+Below is the original Astro Starter Kit: Blog documentation.
+
 # Astro Starter Kit: Blog
 
 ```sh
 npm create astro@latest -- --template blog
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
 
 Features:
 
