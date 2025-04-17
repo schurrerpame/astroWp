@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/BlogPost.astro';
+
+const { slug } = Astro.params;
+
+let res = await fetch(`https://pameschurrer.com/astro/wp-json/wp/v2/posts?slug=${slug}`);
+let [post] = await res.json();
+
+
+export async function getStaticPaths() {
+  let data = await fetch("https://pameschurrer.com/astro/wp-json/wp/v2/posts");
+  let posts = await data.json();
+
+  return posts.map((post: { slug: any; }) => ({
+    params: { slug: post.slug },
+    props: { post: post },
+  }));
+}
+---
+<Layout 
+title={post.title.rendered}
+description="Lorem ipsum dolor sit amet"
+pubDate={new Date('April 04 2025')}
+heroImage=""
+>
+  <article>
+     <Fragment set:html={post.content.rendered} />
+  </article>
+</Layout>
