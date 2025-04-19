@@ -1,0 +1,37 @@
+name: Build & Deploy Astro to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # también podés lanzarlo manualmente
+  schedule:
+    - cron: '0 * * * *' # cada hora (opcional)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          local-dir: ./dist
