@@ -1,0 +1,20 @@
+// Tema claro
+:root {
+    --accent: #52bcfa;
+    --accent-dark: #000d8a;
+    --background: #ffffff;  // Fondo para el tema claro
+    --text-color: #000000;  // Color de texto para el tema claro
+    --primary-bg: #f0f0f0;  // Fondo primario para el tema claro
+    --box-shadow: 0 2px 6px rgba(96, 115, 159, 0.25);
+  }
+  
+  // Tema oscuro
+  [data-theme="dark"] {
+    --accent: #2337ff;
+    --accent-dark: #000d8a;
+    --background: #121212;  // Fondo para el tema oscuro
+    --text-color: #ffffff;  // Color de texto para el tema oscuro
+    --primary-bg: #333333;  // Fondo primario para el tema oscuro
+    --box-shadow: 0 2px 6px rgba(96, 115, 159, 0.5);
+  }
+

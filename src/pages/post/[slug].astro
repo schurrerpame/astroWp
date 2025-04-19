@@ -20,8 +20,6 @@ export async function getStaticPaths() {
 <Layout 
 title={post.title.rendered}
 description="Lorem ipsum dolor sit amet"
-pubDate={new Date('April 04 2025')}
-heroImage=""
 >
   <article>
      <Fragment set:html={post.content.rendered} />

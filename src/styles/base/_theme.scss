@@ -1,0 +1,141 @@
+
+@use '../abstracts/mixins';
+
+html {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    background-color: #ffffff;
+    color: #111;  
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  html.dark {
+    background-color: #111;
+    color: #fff;
+  }
+  
+  // Text helpers
+  .text {
+    &--primary {
+      color: #111;
+    }
+  
+    &--muted {
+      color: #666;
+    }
+  
+    &--accent {
+      color: #3b82f6;
+    }
+  }
+  
+  html.dark .text {
+    &--primary {
+      color: #fff;
+    }
+  
+    &--muted {
+      color: #aaa;
+    }
+  
+    &--accent {
+      color: #60a5fa;
+    }
+  }
+  
+
+  .header {
+      
+    &__logo {
+        fill: #fff;
+        width: 160px;
+
+        @include mixins.respond-to(mobile) {
+          width: 120px;
+        }
+    
+        @include mixins.respond-to(tablet) {
+          width: 140px;
+        }
+      }
+  }
+  
+  html.dark .header {
+  background-color: #111;
+    &__logo{
+        filter: brightness(0) invert(1);
+    }
+  }
+  
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  
+    &__link {
+      color: #111;
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  html.dark .nav__link {
+    color: #fff;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+  
+    &--primary {
+      background-color: #3b82f6;
+      color: white;
+    }
+  
+    &--secondary {
+      background-color: #f3f4f6;
+      color: #111;
+    }
+    &--tertiary, &--tertiary:hover{
+        background: transparent;
+        border: 0px;
+    }
+  }
+  
+  html.dark .button {
+    cursor: pointer;
+
+    &--primary {
+      background-color: #60a5fa;
+      color: #000;
+    }
+  
+    &--secondary {
+      background-color: #3f3f46;
+      color: #fff;
+    }
+    &--tertiary, &--tertiary:hover{
+        background: transparent;
+        border: 0px;
+    }
+  }
+  
+  // Footer
+  .footer {
+    background-color: #f0f0f0;
+    padding: 2rem;
+    text-align: center;
+    color: #111;
+  }
+  
+  html.dark .footer {
+    background-color: #111;
+    color: #fff;
+  }
+  

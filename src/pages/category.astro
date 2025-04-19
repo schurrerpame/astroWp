@@ -1,0 +1,51 @@
+---
+// src/pages/category.astro
+import Layout from '../layouts/BlogPost.astro';
+
+const categoryId = Astro.url.searchParams.get('category');
+
+// Obtener todas las categorías
+const resCategories = await fetch('https://pameschurrer.com/astro/wp-json/wp/v2/categories');
+const categories = await resCategories.json();
+
+// Obtener todos los posts
+const resPosts = await fetch('https://pameschurrer.com/astro/wp-json/wp/v2/posts?_embed&per_page=100');
+const posts = await resPosts.json();
+
+// Filtrar posts por categoría si hay una seleccionada
+const filteredPosts = categoryId
+  ? posts.filter((post: { categories: number[]; }) => post.categories.includes(Number(categoryId)))
+  : posts;
+---
+
+<Layout 
+title="Categorias"
+description=""
+
+>
+  <h1>Categorías del Blog</h1>
+
+  <nav style="margin-bottom: 2rem;">
+    <a href="/category" style="margin-right: 1rem;">Todas</a>
+    {categories.map((cat: { id: any; name: unknown; }) => (
+      <a
+        href={`/category?category=${cat.id}`}
+        style="margin-right: 1rem; text-decoration: {categoryId == cat.id.toString() ? 'underline' : 'none'}"
+      >
+        {cat.name}
+      </a>
+    ))}
+  </nav>
+
+  {filteredPosts.length > 0 ? (
+    <ul>
+      {filteredPosts.map((post: { slug: any; title: { rendered: unknown; }; }) => (
+        <li style="margin-bottom: 1rem;">
+          <a href={`/post/${post.slug}`}>{post.title.rendered}</a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No hay posts en esta categoría.</p>
+  )}
+</Layout>
