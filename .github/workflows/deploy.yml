@@ -7,6 +7,8 @@ on:
   workflow_dispatch: # también podés lanzarlo manualmente
   schedule:
     - cron: '0 * * * *' # cada hora (opcional)
+  repository_dispatch:  # Esta es la clave que agregamos
+    types: [wp-update]  # Asegúrate de que este 'event_type' coincida con el que envíes desde WordPress
 
 jobs:
   build-and-deploy:
