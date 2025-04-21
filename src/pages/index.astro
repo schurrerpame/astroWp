@@ -27,9 +27,9 @@ const posts = await response.json();
 			
 				<h2 class="text--primary">Bienvenido</h2>
 				<p class="text--muted">Explora el contenido</p>
-				<button class="button button--primary">Acción</button>
+			
 				{
-				  posts.map((post) => (
+				  posts.map((post: { slug: any; title: { rendered: unknown; }; }) => (
 					<article>
 					  <h4>
 						<a href={`post/${post.slug}/`} set:html={post.title.rendered} />

@@ -1,4 +1,3 @@
-
 @use '../abstracts/mixins';
 
 html {
@@ -51,7 +50,7 @@ html {
         width: 160px;
 
         @include mixins.respond-to(mobile) {
-          width: 120px;
+          width: 100px;
         }
     
         @include mixins.respond-to(tablet) {

@@ -1,3 +1,5 @@
+@use '../abstracts/mixins';
+
 header {
     display: flex;
     align-items: center;
@@ -25,17 +27,12 @@ nav a {
     color: var(--black);
     border-bottom: 4px solid transparent;
     text-decoration: none;
+    @include mixins.respond-to(tablet) {
+        padding:.1em .3em;
+        font-size: 14px;
+    }
 }
 nav a.active {
     text-decoration: none;
     border-bottom-color: var(--accent);
-}
-.social-links,
-.social-links a {
-    display: flex;
-}
-@media (max-width: 720px) {
-    .social-links {
-        display: none;
-    }
 }
